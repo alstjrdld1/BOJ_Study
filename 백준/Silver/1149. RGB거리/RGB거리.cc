@@ -1,5 +1,4 @@
 #include <iostream>
-#include <vector>
 #include <algorithm>
 using namespace std;
 
@@ -7,28 +6,25 @@ int main() {
 	int N;
 	cin >> N;
 
-	vector<int> rx;
-	vector<int> gx;
-	vector<int> bx;
+	int red = 0;
+	int green = 0;
+	int blue = 0;
 
 	for (int i = 0; i < N; i++) {
-		int red, green, blue;
-		cin >> red >> green >> blue;
+		int r, g, b;
+		cin >> r >> g >> b;
 
-		if (i == 0) {
-			rx.push_back(red);
-			gx.push_back(green);
-			bx.push_back(blue);
-		}
-		else {
-			rx.push_back(red + min(bx[i - 1], gx[i - 1]));
-			gx.push_back(green + min(rx[i - 1], bx[i - 1]));
-			bx.push_back(blue + min(rx[i - 1], gx[i - 1]));
-		}
+		r = r + min(green, blue);
+		g = g + min(red, blue);
+		b = b + min(red, green);
+
+		red = r;
+		green = g;
+		blue = b;
 	}
 
-	int minimum = min(rx[N - 1], gx[N - 1]);
-	minimum = min(minimum, bx[N - 1]);
+	int minimum = min(red, green);
+	minimum = min(minimum, blue);
 	cout << minimum;
 
 	return 0;
