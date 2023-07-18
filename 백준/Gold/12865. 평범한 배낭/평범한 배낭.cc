@@ -16,16 +16,11 @@ int main() {
 		}
 	}
 
-	vector<int> w;
-	vector<int> v;
-	w.push_back(0);
-	v.push_back(0);
+	vector<int> w(N+1);
+	vector<int> v(N+1);
 
 	for (int i = 1; i <= N; i++) {
-		int wi, vi;
-		cin >> wi >> vi;
-		w.push_back(wi);
-		v.push_back(vi);
+		cin >> w[i] >> v[i];
 	}
 
 	for (int i = 1; i <= N; i++) {
